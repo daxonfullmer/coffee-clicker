@@ -1,17 +1,15 @@
+```javascript
 let coffees = 0;
 
-let cooldown = 5;
-let minimumCooldown = 0.8;
+let cooldown = 3;
+let minimumCooldown = 0.4;
 
-let caffeine = 0;
 let gameOver = false;
 let waiting = false;
 
 const coffeeButton = document.getElementById("coffeeButton");
 const coffeeCount = document.getElementById("coffeeCount");
 const status = document.getElementById("status");
-const dangerBar = document.getElementById("dangerBar");
-const dangerText = document.getElementById("dangerText");
 const restartButton = document.getElementById("restartButton");
 
 coffeeButton.addEventListener("click", drinkCoffee);
@@ -27,15 +25,10 @@ function drinkCoffee() {
 
     coffeeCount.textContent = coffees;
 
-    // Getting more awake makes the cooldown shorter.
-    cooldown = Math.max(minimumCooldown, 5 - coffees * 0.14);
+    // You get faster as you drink more coffee.
+    cooldown = Math.max(minimumCooldown, 3 - coffees * 0.13);
 
-    // Drinking coffee quickly increases caffeine.
-    caffeine++;
-
-    updateDanger();
-
-    if (coffees >= 30) {
+    if (coffees >= 20) {
         lose();
         return;
     }
@@ -75,34 +68,21 @@ function startCooldown() {
 }
 
 
-function updateDanger() {
-
-    let percentage = (caffeine / 10) * 100;
-
-    dangerBar.style.width = `${Math.min(percentage, 100)}%`;
-
-    dangerText.textContent =
-        `Caffeine: ${caffeine} / 10`;
-}
-
-
 function lose() {
 
     gameOver = true;
 
     coffeeButton.classList.add("disabled");
+    coffeeButton.disabled = true;
 
     status.textContent = "💀 You are too coffied.";
-
-    coffeeButton.disabled = true;
 }
 
 
 function restart() {
 
     coffees = 0;
-    cooldown = 5;
-    caffeine = 0;
+    cooldown = 3;
     gameOver = false;
     waiting = false;
 
@@ -110,8 +90,6 @@ function restart() {
     coffeeButton.classList.remove("disabled");
 
     coffeeCount.textContent = "0";
-
     status.textContent = "Click the coffee to wake up!";
-
-    updateDanger();
 }
+```

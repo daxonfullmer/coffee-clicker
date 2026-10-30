@@ -78,30 +78,7 @@ h1 {
 #status {
     font-size: 22px;
     min-height: 30px;
-}
 
-.bar {
-    width: 300px;
-    height: 20px;
-
-    margin: 20px auto 5px;
-
-    background: #111;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-#dangerBar {
-    height: 100%;
-    width: 0%;
-
-    background: #e74c3c;
-
-    transition: width 0.2s;
-}
-
-#dangerText {
-    margin-top: 5px;
 }
 
 #restartButton {
