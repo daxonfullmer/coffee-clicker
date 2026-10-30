@@ -1,4 +1,3 @@
-```javascript
 let coffees = 0;
 
 let cooldown = 3;
@@ -16,7 +15,6 @@ coffeeButton.addEventListener("click", drinkCoffee);
 restartButton.addEventListener("click", restart);
 
 function drinkCoffee() {
-
     if (gameOver || waiting) {
         return;
     }
@@ -25,7 +23,7 @@ function drinkCoffee() {
 
     coffeeCount.textContent = coffees;
 
-    // You get faster as you drink more coffee.
+    // The more coffee you drink, the faster you can click.
     cooldown = Math.max(minimumCooldown, 3 - coffees * 0.13);
 
     if (coffees >= 20) {
@@ -36,9 +34,7 @@ function drinkCoffee() {
     startCooldown();
 }
 
-
 function startCooldown() {
-
     waiting = true;
     coffeeButton.classList.add("disabled");
 
@@ -47,14 +43,12 @@ function startCooldown() {
     status.textContent = `Wait ${timeLeft.toFixed(1)} seconds...`;
 
     const timer = setInterval(() => {
-
         timeLeft -= 0.1;
 
         status.textContent =
             `Wait ${Math.max(0, timeLeft).toFixed(1)} seconds...`;
 
         if (timeLeft <= 0) {
-
             clearInterval(timer);
 
             waiting = false;
@@ -63,13 +57,10 @@ function startCooldown() {
 
             status.textContent = "☕ More coffee!";
         }
-
     }, 100);
 }
 
-
 function lose() {
-
     gameOver = true;
 
     coffeeButton.classList.add("disabled");
@@ -78,9 +69,7 @@ function lose() {
     status.textContent = "💀 You are too coffied.";
 }
 
-
 function restart() {
-
     coffees = 0;
     cooldown = 3;
     gameOver = false;
@@ -92,4 +81,3 @@ function restart() {
     coffeeCount.textContent = "0";
     status.textContent = "Click the coffee to wake up!";
 }
-```
