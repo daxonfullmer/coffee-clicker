@@ -1,35 +1,57 @@
+
 <!DOCTYPE html>
+<!-- Tells the browser this is a modern HTML document. -->
 <html lang="en">
 <head>
+    <!-- Defines the character encoding so symbols and emojis display correctly. -->
     <meta charset="UTF-8">
+
+    <!-- Makes the website scale properly on phones, tablets, and computers. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- The title appears in the browser tab. -->
     <title>Coffee Clicker</title>
+
+    <!-- Links our separate CSS file, which controls how the website looks. -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- The main element contains the primary content of the website. -->
     <main>
         <h1>☕ Coffee Clicker</h1>
 
+        <!-- Displays how many coffees the player has clicked so far. -->
+        <!-- The span lets JavaScript change just the number without changing the rest of the text. -->
         <div class="counter">
-            Coffees: <span id="coffeeCount">0</span> / 30
+            Coffees: <span id="coffeeCount">0</span> / 20
         </div>
 
+        <!-- Displays the player's best score. JavaScript loads and updates this number. -->
         <div class="counter">
             Personal Best: <span id="highScore">0</span>
         </div>
 
+        <!-- Groups the coffee button and cooldown display together. -->
         <div class="coffee-area">
+            <!-- JavaScript listens for clicks on this button. -->
             <button id="coffeeButton">☕</button>
+
+            <!-- An empty element that could be used to display a cooldown animation. -->
             <div id="cooldown"></div>
         </div>
 
+        <!-- JavaScript changes this message to tell the player what is happening. -->
         <p id="status">Click the coffee to wake up!</p>
 
+        <!-- Resets the current game when clicked. -->
         <button id="restartButton">Restart</button>
     </main>
 
+    <!-- Loads our separate JavaScript file, which controls how the game works. -->
+    <!-- This is placed at the bottom so the HTML elements exist before JavaScript looks for them. -->
     <script src="script.js"></script>
 </body>
 </html>
+
