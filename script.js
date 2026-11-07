@@ -2,7 +2,7 @@ let coffees = 0;
 
 let cooldown = 3;
 let minimumCooldown = 0.4;
-
+let highScore = Number(localStorage.getItem("highScore")) || 0;
 let gameOver = false;
 let waiting = false;
 
@@ -10,9 +10,11 @@ const coffeeButton = document.getElementById("coffeeButton");
 const coffeeCount = document.getElementById("coffeeCount");
 const status = document.getElementById("status");
 const restartButton = document.getElementById("restartButton");
+const highScoreDisplay = document.getElementById("highScore");
 
 coffeeButton.addEventListener("click", drinkCoffee);
 restartButton.addEventListener("click", restart);
+highScoreDisplay.textContent = highScore;
 
 function drinkCoffee() {
     if (gameOver || waiting) {
@@ -20,7 +22,11 @@ function drinkCoffee() {
     }
 
     coffees++;
-
+    if (coffees > highScore) {
+    highScore = coffees;
+    localStorage.setItem("highScore", highScore);
+    highScoreDisplay.textContent = highScore;
+    }
     coffeeCount.textContent = coffees;
 
     // The more coffee you drink, the faster you can click.
